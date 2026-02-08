@@ -1,0 +1,50 @@
+# Analysis and Findings: Telecom Customer Complaint Project
+
+## Introduction
+This file presents the analysis of 15 sample telecom customer complaints.  
+The goal is to quantify complaint severity, identify trends across providers and regions, and generate actionable insights.  
+This demonstrates applied quantitative analysis using Airtable and low-code tools.
+
+---
+
+## Methodology
+
+### 1. Category Weight
+Numeric weights are assigned to each complaint type to reflect operational importance:
+
+| Category | Weight |
+|----------|--------|
+| Network Outage | 5 |
+| Call Drop | 4 |
+| Slow Internet | 3 |
+| Billing Issue | 2 |
+| Customer Service | 1 |
+
+**Airtable formula:**
+```markdown
+SWITCH(
+  {Category},
+  "Network Outage", 5,
+  "Call Drop", 4,
+  "Slow Internet", 3,
+  "Billing Issue", 2,
+  "Customer Service", 1
+)
+
+## Severity Score
+Calculates complaint severity based on Resolution Time, Category Weight, and Satisfaction
+
+(0.4 * {Resolution Time (Days)}) +
+(0.4 * {Category Weight}) +
+(0.2 * (6 - {Satisfaction (1–5)}))
+
+## Risk Level
+Classifies complaints as Low, Medium, or High based on Severity Score
+
+IF(
+  {Severity Score} >= 7, "High",
+  IF(
+    {Severity Score} >= 4, "Medium",
+    "Low"
+  )
+)
