@@ -1,5 +1,8 @@
 # telecom-complaint-analytics
-Applied quantitative project analyzing telecom customer complaints with severity scoring model and dashboard in Airtable
+
+## Problem Statement
+
+Telecom companies receive thousands of customer complaints daily, but prioritizing and addressing the most urgent issues is often challenging. Delays in resolution and lack of structured analysis can lead to low customer satisfaction and operational inefficiencies. This project analyzes sample telecom complaints to identify high-priority issues, uncover trends across providers and regions, and provide actionable recommendations for better complaint management.
 
 ## Overview
 
@@ -66,6 +69,10 @@ Descriptive statistics were calculated to summarize key metrics:
 ### 3. Applied Modeling: Severity Score
 
 A **Severity Score** formula was created to quantify complaint urgency:
+(0.4 * {Resolution Time (Days)}) +
+(0.4 * {Category Weight}) +
+(0.2 * (6 - {Satisfaction (1–5)}))
+
 
 
 
